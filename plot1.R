@@ -8,7 +8,6 @@
 library (datasets)        #library for base plots
 
 # Working dirs for different machines 
-lenovo  <- "D:/Users/jetjon/DropBox/_Coursera/4. Exploratory Data Analysis/Week 1"
 dell    <- "C:/Users/Jerry/DropBox/_Coursera/4. Exploratory Data Analysis/Week 1"
 mydir   <- dell  
 init  <- function(dir=mydir){setwd(dir) }

@@ -45,9 +45,6 @@ data <- read.table(dataFile, header=TRUE, sep=";", stringsAsFactors=FALSE, na.st
 # convert Data Column to date format 
 data$Date <- as.Date(data$Date, format="%d/%m/%Y")
 
-# datetime <- paste(as.Date(data$Date), data$Time)
-# data$Datetime <- as.POSIXct(datetime)
-
 # Subset the data 
 date1 <- as.Date ("01/02/2007", format="%d/%m/%Y") 
 date2 <- as.Date ("02/02/2007", format="%d/%m/%Y") 
@@ -59,12 +56,11 @@ subset_data <- subset(data, subset=(Date >= date1 & Date <= date2))
 # y-axis: Frequency 
 # divide var: Global_active_power/ 1000 to get kiloWatt
 ####################################################################################################
-with(subset_data,  hist(as.numeric(subset_data$Global_active_power), 
-                        main="Global Active Power", 
-                        xlab="Global Active Power (kilowatts)", 
-                        ylab="Frequency", 
-                        col="Red"))
-
-dev.copy(png,"plot1.png",width=480,height=480,units="px")   # Copy my plot to a PNG file
-dev.off()                                                   # Don't forget to close the PNG device!
+png("plot1.png", width=480, height=480, units =  "px")
+  hist(as.numeric(subset_data$Global_active_power), 
+       main="Global Active Power", 
+       xlab="Global Active Power (kilowatts)", 
+       ylab="Frequency", 
+       col="Red")
+dev.off()
 
